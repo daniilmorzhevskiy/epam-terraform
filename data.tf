@@ -13,7 +13,7 @@ data "aws_subnet" "public_subnet" {
 
   filter {
     name   = "tag:Name"
-    values = ["cmtr-dmg42ceb-pub-sub1"]
+    values = ["cmtr-dmg42ceb-public_subnet"]
   }
 }
 
