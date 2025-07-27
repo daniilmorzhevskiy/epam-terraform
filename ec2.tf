@@ -16,7 +16,7 @@
 resource "aws_instance" "cmtr_instance" {
   ami                    = "ami-08c40ec9ead489470"
   instance_type          = "t2.micro"
-  subnet_id              = data.aws_subnet.public_subnet.id
+  subnet_id              = data.aws_subnets.public_subnets.ids[0]
   key_name               = aws_key_pair.cmtr_keypair.key_name
   vpc_security_group_ids = [data.aws_security_group.cmtr_sg.id]
 
