@@ -1,9 +1,10 @@
 resource "aws_s3_bucket" "cmtr_bucket" {
-  bucket = "cmtr-dmg42ceb-bucket-1753693219"
+  bucket = var.bucket_name
 
   tags = {
-    Project = "cmtr-dmg42ceb"
+    Project = var.project_tag
   }
+
   force_destroy = false
 }
 
