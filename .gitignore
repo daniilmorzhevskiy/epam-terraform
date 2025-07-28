@@ -1,0 +1,39 @@
+# Local .terraform directories
+.terraform/
+
+# Terraform state files
+*.tfstate
+*.tfstate.backup
+
+# Crash log files
+crash.log
+
+# Ignore Terraform plan output
+*.tfplan
+
+# Variable override files (can contain secrets)
+*.tfvars
+*.tfvars.json
+
+# Sensitive environment variable files
+.env
+.env.*
+
+# SSH keys
+*.pem
+*.key
+*.pub
+id_rsa
+id_rsa.pub
+
+# Ignore logs
+*.log
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Terraform lock file (optional to ignore if you're collaborating)
+# terraform.lock.hcl
