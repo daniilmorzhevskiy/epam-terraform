@@ -7,7 +7,7 @@ resource "aws_iam_group" "group" {
 resource "aws_iam_policy" "policy" {
   name        = "${var.project_tag}-iam-policy"
   description = "Write-only access to the S3 bucket"
-  policy      = templatefile("${path.module}/policy.json", {
+  policy = templatefile("${path.module}/policy.json", {
     bucket_name = var.bucket_name
   })
   tags = {
@@ -57,7 +57,7 @@ resource "aws_iam_policy" "iam_policy" {
   name        = "cmtr-dmg42ceb-iam-policy"
   description = "Policy for S3 write access to cmtr-dmg42ceb-bucket-1753714264"
   policy = templatefile("${path.module}/policy.json", {
-    bucket = "cmtr-dmg42ceb-bucket-1753714264"
+    bucket_name = "cmtr-dmg42ceb-bucket-1753714264"
   })
 
   tags = {
