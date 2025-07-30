@@ -15,6 +15,7 @@ resource "aws_iam_policy" "policy" {
 
 resource "aws_iam_role" "role" {
   name = "${var.project_tag}-iam-role"
+
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
     Statement = [
@@ -27,6 +28,7 @@ resource "aws_iam_role" "role" {
       }
     ]
   })
+
   tags = {
     Project = var.project_tag
   }
