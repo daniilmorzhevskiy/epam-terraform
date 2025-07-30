@@ -14,7 +14,7 @@ crash.log
 # Variable override files (can contain secrets)
 *.tfvars
 *.tfvars.json
-
+terraform.tfvars
 # Sensitive environment variable files
 .env
 .env.*
