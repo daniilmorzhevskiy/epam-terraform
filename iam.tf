@@ -1,8 +1,6 @@
 resource "aws_iam_group" "group" {
   name = "${var.project_tag}-iam-group"
-  tags = {
-    Project = var.project_tag
-  }
+  
 }
 
 resource "aws_iam_policy" "policy" {
