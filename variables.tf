@@ -9,11 +9,13 @@ variable "aws_secret_key" {
 }
 
 variable "project_tag" {
-  default     = "cmtr-dmg42ceb"
   description = "Project tag for resource naming"
+  type        = string
+  default     = "cmtr-dmg42ceb"
 }
 
 variable "bucket_name" {
+  description = "Pre-existing S3 bucket name"
+  type        = string
   default     = "cmtr-dmg42ceb-bucket-1753893090"
-  description = "Pre-existing S3 bucket"
 }
