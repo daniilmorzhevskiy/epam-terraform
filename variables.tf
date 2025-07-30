@@ -19,3 +19,4 @@ variable "bucket_name" {
   type        = string
   default     = "cmtr-dmg42ceb-bucket-1753893090"
 }
+
