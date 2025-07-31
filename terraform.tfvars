@@ -1,12 +1,19 @@
-# public_subnets  = ["subnet-0a1b2c3d4e5f6g7h8", "subnet-1a2b3c4d5e6f7g8h9"]
-# private_subnets = ["subnet-9h8g7f6e5d4c3b2a1", "subnet-8h7g6f5e4d3c2b1a0"]
+vpc_id = "vpc-01df0044aeec59b23"
 
-# vpc_id = "vpc-0123456789abcdef0"
+public_subnet_ids = [
+  "subnet-06c14679f47107794",
+  "subnet-03aeb369068ba16d3"
+]
 
-# ec2_sg_id  = "sg-0a1b2c3d4e5f6g7h8"
-# http_sg_id = "sg-1a2b3c4d5e6f7g8h9"
-# lb_sg_id   = "sg-9h8g7f6e5d4c3b2a1"
+private_subnet_ids = [
+  "subnet-04956f915acbeadf0",
+  "subnet-0a00ca07cd9d55dad"
+]
 
-# ssh_key_name = "cmtr-dmg42ceb-keypair"
-# ami_id       = "ami-09e6f87a47903347c"
-# project_id   = "cmtr-dmg42ceb"
+ec2_sg_id  = "sg-0d1c0c88d500f69de"
+http_sg_id = "sg-0c0145c29c6f922d0"
+lb_sg_id   = "sg-04c9f0f1a8eb77aeb"
+
+ssh_key_name = "cmtr-dmg42ceb-keypair"
+
+iam_instance_profile = "cmtr-dmg42ceb-instance_profile"

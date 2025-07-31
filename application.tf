@@ -10,6 +10,7 @@ resource "aws_launch_template" "this" {
 
   network_interfaces {
     security_groups       = [var.ec2_sg_id, var.http_sg_id]
+    device_index          = 0
     delete_on_termination = true
   }
 
@@ -22,7 +23,6 @@ resource "aws_launch_template" "this" {
 
   tag_specifications {
     resource_type = "instance"
-
     tags = {
       Name      = "cmtr-dmg42ceb-instance"
       Terraform = "true"
@@ -32,19 +32,24 @@ resource "aws_launch_template" "this" {
 }
 
 resource "aws_autoscaling_group" "this" {
-  name                = "cmtr-dmg42ceb-asg"
-  desired_capacity    = 2
-  min_size            = 1
-  max_size            = 2
-  vpc_zone_identifier = var.private_subnet_ids
-  health_check_type   = "EC2"
+  name                      = "cmtr-dmg42ceb-asg"
+  desired_capacity          = 2
+  min_size                  = 1
+  max_size                  = 2
+  vpc_zone_identifier       = var.private_subnet_ids
+  health_check_type         = "EC2"
+  health_check_grace_period = 300
+
   launch_template {
     id      = aws_launch_template.this.id
     version = "$Latest"
   }
 
   lifecycle {
-    ignore_changes = [target_group_arns, load_balancers]
+    ignore_changes = [
+      target_group_arns,
+      load_balancers,
+    ]
   }
 
   tag {

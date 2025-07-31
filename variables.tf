@@ -39,3 +39,9 @@ variable "lb_sg_id" {
   description = "Security group ID for ALB"
   default     = "sg-zzzzzzzzzzzzzzzzz"
 }
+
+variable "iam_instance_profile" {
+  type        = string
+  description = "Name of the IAM instance profile"
+  default     = "cmtr-dmg42ceb-instance_profile"
+}
