@@ -24,7 +24,7 @@ resource "aws_launch_template" "this" {
     resource_type = "instance"
 
     tags = {
-      Name     = "cmtr-dmg42ceb-instance"
+      Name      = "cmtr-dmg42ceb-instance"
       Terraform = "true"
       Project   = "cmtr-dmg42ceb"
     }
@@ -32,12 +32,12 @@ resource "aws_launch_template" "this" {
 }
 
 resource "aws_autoscaling_group" "this" {
-  name                      = "cmtr-dmg42ceb-asg"
-  desired_capacity          = 2
-  min_size                  = 1
-  max_size                  = 2
-  vpc_zone_identifier       = var.private_subnet_ids
-  health_check_type         = "EC2"
+  name                = "cmtr-dmg42ceb-asg"
+  desired_capacity    = 2
+  min_size            = 1
+  max_size            = 2
+  vpc_zone_identifier = var.private_subnet_ids
+  health_check_type   = "EC2"
   launch_template {
     id      = aws_launch_template.this.id
     version = "$Latest"
