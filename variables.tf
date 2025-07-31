@@ -1,7 +1,7 @@
-# variable "aws_region" {
-#   description = "AWS region for resources"
-#   type        = string
-# }
+variable "aws_region" {
+  description = "AWS region for resources"
+  type        = string
+}
 
 variable "project_id" {
   description = "Project identifier for tagging"
