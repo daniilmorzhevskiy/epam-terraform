@@ -6,7 +6,7 @@ data "aws_instance" "private_instance" {
   instance_id = var.private_instance_id
 }
 
-# SSH Security Group
+# SSH SG: 22/tcp и ICMP
 resource "aws_security_group" "ssh_sg" {
   name        = "cmtr-dmg42ceb-ssh-sg"
   description = "Allow SSH and ICMP from allowed IPs"
@@ -31,7 +31,7 @@ resource "aws_security_group" "ssh_sg" {
   }
 }
 
-# Public HTTP Security Group
+# Public HTTP SG: 80/tcp и ICMP
 resource "aws_security_group" "public_http_sg" {
   name        = "cmtr-dmg42ceb-public-http-sg"
   description = "Allow HTTP and ICMP from allowed IPs"
@@ -56,10 +56,10 @@ resource "aws_security_group" "public_http_sg" {
   }
 }
 
-# Private HTTP Security Group (uses separate rules)
+# Private HTTP SG: 8080/tcp и ICMP только от public_http_sg
 resource "aws_security_group" "private_http_sg" {
   name        = "cmtr-dmg42ceb-private-http-sg"
-  description = "Allow HTTP 8080 and ICMP from public SG"
+  description = "Allow HTTP 8080 and ICMP from Public HTTP SG"
   vpc_id      = var.vpc_id
 
   tags = {
@@ -85,8 +85,7 @@ resource "aws_security_group_rule" "private_icmp_from_public_sg" {
   source_security_group_id = aws_security_group.public_http_sg.id
 }
 
-# Attachments
-
+# Привязка SG к интерфейсам
 resource "aws_network_interface_sg_attachment" "attach_public_ssh" {
   security_group_id    = aws_security_group.ssh_sg.id
   network_interface_id = data.aws_instance.public_instance.network_interface_id
